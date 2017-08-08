@@ -8,8 +8,21 @@
         margin-top: 40px;
         margin-bottom: 40px;
     }
+    .obras.pesquisar{
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
     h1{
         margin-top: 50px;
+    }
+    .obras.pesquisar input{
+        width: 100%;
+    }
+    .obras.pesquisar button{
+        width: 100%;
+    }
+    .obras h1{
+        margin-top: 60px;
     }
 }
 
@@ -17,6 +30,20 @@
     .home.pesquisar{
         margin-top: 60px;
         margin-bottom: 60px;
+    }
+    .obras.pesquisar{
+        margin-top: 60px;
+        margin-bottom: 5px;
+    }
+    .obras.pesquisar input{
+        width: 79%;
+    }
+    .obras.pesquisar button{
+        width: 20%;
+    }
+    .obras.pesquisar input,
+    .obras.pesquisar button{
+        display: inline-block;
     }
     h1{
         margin-top: 70px;
@@ -29,6 +56,11 @@
         margin-top: 60px;
         margin-bottom: 60px;
     }
+    .obras.pesquisar{
+        margin-top: 60px;
+        margin-bottom: 5px;
+    }
+    
     h1{
         margin-top: 140px;
     }
