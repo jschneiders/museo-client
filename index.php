@@ -50,6 +50,7 @@
                         <li><a href="#">Museu 3</a></li>
                     </ul>
                     </li>
+                    <li><a href="index.php?op=login">Login</a></li>
                 </ul>
 
                 
