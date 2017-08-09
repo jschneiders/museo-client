@@ -1,0 +1,56 @@
+version: '2'
+networks:
+  elk-network:
+    driver: bridge
+
+services:
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:5.5.0
+    container_name: kibana
+    volumes:
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - elk-network
+    ports:
+      - "5601:5601"
+      
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.0
+    container_name: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - http.host=0.0.0.0
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    networks:
+      - elk-network
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
+      - ./elasticsearch/data:/var/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  mysql:
+    container_name: mysql-server
+    image: mysql/mysql-server:latest
+    ports:
+      - "3306:3306"
+    networks:
+      - elk-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword1
+      - MYSQL_ROOT_HOST=%
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    networks:
+      - elk-network
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql-server
+      - MYSQL_ROOT_PASSWORD=mypassword1 
