@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no"/>
 		<meta name="MobileOptimized" content="320">
@@ -10,19 +10,19 @@
 		<meta name="description" content="Cliente do sistema de museus Museo!">
 
         <title>Museo</title>
-        
+
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
 	</head>
 	<body>
 
-        <?php 
+        <?php
             if($_GET['op'] == ''){
                 $content = include './content/home.php';
             }else{
                 $content = include './content/'.$_GET['op'].'.php';
             }
-                    
+
         ?>
 
         <nav class="navbar navbar-default">
@@ -53,7 +53,7 @@
                     <li><a href="index.php?op=login">Login</a></li>
                 </ul>
 
-                
+
 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -62,7 +62,12 @@
 
             <?php echo $content; ?>
 
-        <script src="js/jquery-3.2.1.min.js"></script>		
-		<script src="js/bootstrap.min.js"></script>		
-	</body>	
-</html> 
+
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/util.js"></script>
+		</script>
+	</body>
+</html>
