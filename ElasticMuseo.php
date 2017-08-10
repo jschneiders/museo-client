@@ -54,8 +54,13 @@
 		}
 	}
 
+<<<<<<< HEAD
 	//$es = new ElasticMuseo();
 	//echo $es->getObras("nome","victor","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
+=======
+	#$es = new ElasticMuseo();
+	#echo $es->getObras("","","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
+>>>>>>> ff6967898d4bdcdcff1bd0452ae7793b5fc935fa
 
 	// $es->getObras("","monna lisa","","",0) //pesquisa por qualquer ocorrencia de monna lisa
 
