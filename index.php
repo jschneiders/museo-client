@@ -17,18 +17,17 @@
 	<body>
 
         <?php
-				session_start();
+					session_start();
 
-				if(isset($_GET['op'])){
-					if($_GET['op'] == ''){
-							$content = include './content/home.php';
+					if(isset($_GET['op'])){
+						if($_GET['op'] == ''){
+								$content = include './content/home.php';
+						}else{
+								$content = include './content/'.$_GET['op'].'.php';
+						}
 					}else{
-							$content = include './content/'.$_GET['op'].'.php';
+						$content = include './content/home.php';
 					}
-				}else{
-					$content = include './content/home.php';
-				}
-
 
         ?>
 
@@ -52,7 +51,6 @@
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outros museus <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-
 											<!-- AQUI VAI LISTAR OS MUSEUS NO MENU SUPERIOR -->
 											<?php
 													include "./sql/lista_museus.php";
@@ -62,7 +60,6 @@
 											 <!-- FIM DA LISTAGEM DE MUSEUS -->
                     </ul>
                     </li>
-
 										<!-- VERIFICA SE O USUARIO ESTA LOGADO PRA GERAR BOTAO LOGIN OU SAIR -->
 										<?php
 												$op = "login";
@@ -82,6 +79,33 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
             </nav>
+
+						<!-- Diz qual usuario esta logado -->
+						<?php
+
+							$usr_name = "Vistante";
+							$nivel = "";
+
+							if(isset($_SESSION["usuario_nome"])){
+								$usr_name = $_SESSION["usuario_nome"];
+
+								switch ($_SESSION["usuario_acesso"]) {
+									case 0:
+										$nivel = "Pesquisador";
+										break;
+									case 1:
+										$nivel = "Técnico";
+										break;
+									case 2:
+										$nivel = "Diretor";
+										break;
+									case 3:
+										$nivel = "Coordenador";
+										break;
+								}
+							}
+							echo "<div class='user-box'><b>$usr_name</b><br>$nivel</div>";
+						 ?>
 
 
             <?php echo $content; ?>

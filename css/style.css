@@ -1,4 +1,14 @@
-
+.user-box{
+  float: right;
+  padding: 0;
+  margin: 0;
+  color: white;
+  padding: 5px;
+  padding-right: 20px;
+  background-color: rgba(0,0,0,0.8);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
 
 
 
@@ -60,7 +70,7 @@
         margin-top: 60px;
         margin-bottom: 5px;
     }
-    
+
     h1{
         margin-top: 140px;
     }

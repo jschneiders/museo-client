@@ -18,7 +18,7 @@ $content = '<div class="container">
             </div>';
 
             if(isset($_SESSION["usuario_nome"])){
-              $content = "Usuario logado.";
+              header("Location: ./index.php");
             }
 
 return $content;
