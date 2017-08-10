@@ -31,8 +31,11 @@
     .obras.pesquisar button{
         width: 100%;
     }
-    .obras h1{
+    .obras h1,.obra{
         margin-top: 60px;
+    }
+    .button-space{
+        margin: 5px 0;
     }
 }
 
