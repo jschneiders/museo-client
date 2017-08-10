@@ -52,11 +52,18 @@
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outros museus <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Museu 1</a></li>
-                        <li><a href="#">Museu 2</a></li>
-                        <li><a href="#">Museu 3</a></li>
+
+											<!-- AQUI VAI LISTAR OS MUSEUS NO MENU SUPERIOR -->
+											<?php
+													include "./sql/lista_museus.php";
+													$li = listaTodosMuseus();
+													echo $li;
+											 ?>
+											 <!-- FIM DA LISTAGEM DE MUSEUS -->
                     </ul>
                     </li>
+
+										<!-- VERIFICA SE O USUARIO ESTA LOGADO PRA GERAR BOTAO LOGIN OU SAIR -->
 										<?php
 												$op = "login";
 												if(isset($_SESSION["usuario_nome"]))
@@ -67,7 +74,7 @@
 													echo "<li><a href = 'index.php?op=$op'>Login</a></li>";
 												}
 										 ?>
-                    <!-- <li><a href="index.php?op=login">Login</a></li> -->
+										 <!-- FIM -->
                 </ul>
 
 
