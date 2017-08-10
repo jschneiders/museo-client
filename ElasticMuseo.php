@@ -13,6 +13,7 @@
 		#offset = Offset na busca para permitir páginas
 		public function getObras($field,$query,$tipoObra,$museu,$offset=0)
 		{
+
 			if($field == "") //para procurar em todas as partes indexadas do documento
 			{
 				$field = "_all";
@@ -40,11 +41,15 @@
 			{
 				$tipoObra = urlencode($tipoObra)."/";
 			}
+
 				
 			$request = sprintf("%s_search?default_operator=AND&q=%s:%s&size=%u&from=%u%s",$tipoObra,$field,$query,$this->noResults,$offset,$filtroMuseu);
 			
 			
 			$result = file_get_contents($url.$request);
+
+
+			$result = file_get_contents($request);
 
 			$json = json_decode($result);
 
