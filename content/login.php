@@ -6,10 +6,10 @@ $content = '<div class="container">
                     <h4>Fazendo login é possível ter acesso as informações de pesquisador das obras. </h4>
                     <form class="home pesquisar" action="./sql/auth.php" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control cpf-input" placeholder="012.345.678-90" name="cpf" maxlength="14">
+                            <input type="text" class="form-control cpf-input" placeholder="CPF" name="cpf" maxlength="14">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="password" name="pass">
+                            <input type="password" class="form-control" placeholder="Senha" name="pass">
                         </div>
                         <button type="submit" class="btn btn-default">login</button>
                     </form>
@@ -17,6 +17,9 @@ $content = '<div class="container">
                 </div>
             </div>';
 
+            if(isset($_SESSION["usuario_nome"])){
+              $content = "Usuario logado.";
+            }
 
 return $content;
 

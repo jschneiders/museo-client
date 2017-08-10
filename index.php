@@ -17,11 +17,18 @@
 	<body>
 
         <?php
-            if($_GET['op'] == ''){
-                $content = include './content/home.php';
-            }else{
-                $content = include './content/'.$_GET['op'].'.php';
-            }
+				session_start();
+
+				if(isset($_GET['op'])){
+					if($_GET['op'] == ''){
+							$content = include './content/home.php';
+					}else{
+							$content = include './content/'.$_GET['op'].'.php';
+					}
+				}else{
+					$content = include './content/home.php';
+				}
+
 
         ?>
 
@@ -50,7 +57,17 @@
                         <li><a href="#">Museu 3</a></li>
                     </ul>
                     </li>
-                    <li><a href="index.php?op=login">Login</a></li>
+										<?php
+												$op = "login";
+												if(isset($_SESSION["usuario_nome"]))
+												{
+													$op = "logoff";
+													echo "<li><a href = 'index.php?op=$op'>Sair</a></li>";
+												}else{
+													echo "<li><a href = 'index.php?op=$op'>Login</a></li>";
+												}
+										 ?>
+                    <!-- <li><a href="index.php?op=login">Login</a></li> -->
                 </ul>
 
 
