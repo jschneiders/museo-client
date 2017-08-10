@@ -1,0 +1,71 @@
+[
+    {
+        "_id": "2",
+        "_index": "obras",
+        "_score": 0.8348456,
+        "_source": {
+            "@type": "Pintura",
+            "altura": 1,
+            "autor": [
+                "gil brother"
+            ],
+            "colecao": "colecao A",
+            "comprimento": 1,
+            "dataAquisicao": "19/2/2000",
+            "dataCadastro": "08/08/2017 21.02.48",
+            "dataPublicacao": "20/2/2000",
+            "descricao": "Gibis do homem aranha",
+            "estadoConservacao": "otimo",
+            "identificador": "2",
+            "largura": 1,
+            "localEstante": "a",
+            "localNumero": 3,
+            "localPrateleira": "b",
+            "material": [
+                "pedra"
+            ],
+            "museu": "Museu de Exemplo",
+            "nome": "spider man",
+            "paisOrigem": "Andorra",
+            "peso": 1,
+            "prateleira": "b",
+            "procedencia": "baba",
+            "tecnica": "pulp fiction",
+            "titulo": "homem de ferro"
+        },
+        "_type": "Pintura"
+    },
+    {
+        "_id": "3",
+        "_index": "obras",
+        "_score": 0.74378085,
+        "_source": {
+            "@type": "Arquitetura",
+            "autor": [
+                "Victor Covalski"
+            ],
+            "caminhoImagem": "/var/www/imagens/1.png",
+            "colecao": "colecao A",
+            "dataAquisicao": "19/2/2000",
+            "dataCadastro": "09/08/2017 21.56.01",
+            "dataPublicacao": "20/2/2000",
+            "descricao": "esta obra mostra o trabalho realizado por victor!!\t",
+            "estilo": "code",
+            "identificador": "3",
+            "linguagem": "Java",
+            "localEstante": "a",
+            "localNumero": 3,
+            "localPrateleira": "b",
+            "material": [
+                "bits"
+            ],
+            "museu": "Museu de Exemplo",
+            "nome": "victor",
+            "paisOrigem": "Andorra",
+            "prateleira": "b",
+            "procedencia": "aa",
+            "titulo": "o grande programador"
+        },
+        "_type": "Arquitetura"
+    }
+]

@@ -48,17 +48,14 @@
 			
 			$result = file_get_contents($url.$request);
 
-
-			$result = file_get_contents($request);
-
 			$json = json_decode($result);
 
 			return json_encode($json->hits->hits);
 		}
 	}
 
-	//$es = new ElasticMuseo();
-	//echo $es->getObras("","","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
+	$es = new ElasticMuseo();
+	echo $es->getObras("nome","victor","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
 
 	// $es->getObras("","monna lisa","","",0) //pesquisa por qualquer ocorrencia de monna lisa
 
