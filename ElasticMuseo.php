@@ -49,15 +49,21 @@
 			$result = file_get_contents($url.$request);
 
 			$json = json_decode($result);
-
+			#echo json_encode($json);
 			return json_encode($json->hits->hits);
+			#return $result;
 		}
 	}
 
+	#$es = new ElasticMuseo();
+	#$var = $es->getObras("","victor","","",0); //pesquisa por qualquer ocorrencia de monna lisa
 
-	// $es->getObras("","monna lisa","","",0) //pesquisa por qualquer ocorrencia de monna lisa
-
-	// $es->getObras("titulo","O grito","","",0) //pesquisa por O grito no titulo
+	#vardump($var);
+	#$var = json_decode($var);
+	#echo $var['hits']['hits'][0]['_index'];
+	#var_dump($var);
+	#echo $var[0]->_index;
+	#echo $es->getObras("","Victor","","",0) //pesquisa por O grito no titulo
 
 	// $es->getObras("","","Pintura","",100) //pesquisa por Pinturas e retorna com offset 100 no resultado
 ?>

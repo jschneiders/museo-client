@@ -16,8 +16,9 @@ if($_SESSION["museu_atual"] == -1)
   $museu = $museu_name;
 }
 $es = new ElasticMuseo();
-$results = $es->getObras("titulo", $current_query, "", "", 0);
+$results = json_decode($es->getObras("", $current_query, "", $museu, 0));
 
+//echo $results[0]->_index;
 //$content = "Buscando..." . $_SESSION["pesquisa_atual"] . "<br>";
 
 
@@ -41,11 +42,15 @@ $content = '<div class="container obras">
 
                         <!-- Table -->
                         <table class="table">';
-                        foreach($results as $result){
+                       foreach($results as $result){
+                          //$result = json_encode($result, true);
+                        foreach($result->_source->autor as $key => $autor){
+                          $autores .= $autor;
+                        }
                           $content .= '<tr>
-                                          <td><a href="index.php?op=obra&id='.$result['_id'].'" >'.$result['_source']['titulo'].'</a></td>
-                                          <td>'.$result['_source']['autor'].'</td>
-                                          <td>'.$result['_source']['museo'].'</td>
+                                          <td><a href="index.php?op=obra&id='.$result->_id.'" >'.$result->_source->titulo.'</a></td>
+                                          <td>' . $autor . '</td>
+                                          <td>'.$result->_source->museu.'</td>
                                       </tr>';
                         }
                             

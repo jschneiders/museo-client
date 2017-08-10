@@ -8,10 +8,10 @@ $db_name="museo"; // Database name
 
 
 //Configuração Guilherme
-$host= "localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="museo"; // Database name
+//$host= "localhost"; // Host name
+//$username="root"; // Mysql username
+//$password=""; // Mysql password
+//$db_name="museo"; // Database name
 
 
 $connection = mysqli_connect("$host", "$username", "$password") or die(mysql_error());
