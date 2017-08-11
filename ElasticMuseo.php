@@ -7,20 +7,46 @@
 		private $index = "obras"; 	 #indice onde a busca acontece
 		public $noResults = 50;		 #número de resultados na query
 
-		#field = campo onde a busca acontece
-		#tipoObra = tipo de obra onde a busca acontece (Pintura,Arquitetura)
+		#field = campo onde a busca acontece, se deixado vazio pesquisa em todos os campos indexados
+		#tipoObra = tipo de obra a ser pesquisado, se vazio pesquisa por todos
+		#museu = Museu para filtrar as obras, se vazio, pesquisa em todos
 		#offset = Offset na busca para permitir páginas
-		public function getObras($field,$query,$tipoObra="_all",$offset=0)
+		public function getObras($field,$query,$tipoObra,$museu,$offset=0)
 		{
 
-			if($tipoObra == "")
+			if($field == "") //para procurar em todas as partes indexadas do documento
 			{
-				$request = sprintf("http://%s:%u/%s/_search?q=%s:%s&size=%u&from=%u",$this->host,$this->port,$this->index,$field,$query,$this->noResults,$offset);
+				$field = "_all";
 			}
-			else
+
+			if($query == "") //se query vazia coloca *, assim pega todos
 			{
-				$request = sprintf("http://%s:%u/%s/%s/_search?q=%s:%s&size=%u&from=%u",$this->host,$this->port,$this->index,$tipoObra,$field,$query,$this->noResults,$offset);
+				$query = "*";
 			}
+			//prepara a url
+			$query = urlencode($query); 
+			$field = urlencode($field);
+			$museu = urlencode($museu);
+
+			$filtroMuseu = "";
+			if($museu != "")
+			{
+				$filtroMuseu = sprintf("&q=museu:%s",$museu);
+			}
+
+			$url = sprintf("http://%s:%u/%s/",$this->host,$this->port,$this->index);
+
+
+			if($tipoObra != "")
+			{
+				$tipoObra = urlencode($tipoObra)."/";
+			}
+
+				
+			$request = sprintf("%s_search?default_operator=AND&q=%s:%s&size=%u&from=%u%s",$tipoObra,$field,$query,$this->noResults,$offset,$filtroMuseu);
+			
+			
+			$result = file_get_contents($url.$request);
 
 
 			$result = file_get_contents($request);
@@ -31,6 +57,12 @@
 		}
 	}
 
-	#$es = new ElasticMuseo();
-	#echo $es->getObras("titulo","homem","",0);
+	//$es = new ElasticMuseo();
+	//echo $es->getObras("","","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
+
+	// $es->getObras("","monna lisa","","",0) //pesquisa por qualquer ocorrencia de monna lisa
+
+	// $es->getObras("titulo","O grito","","",0) //pesquisa por O grito no titulo
+
+	// $es->getObras("","","Pintura","",100) //pesquisa por Pinturas e retorna com offset 100 no resultado
 ?>
