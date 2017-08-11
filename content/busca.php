@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $_SESSION["museu_atual"] = -1;
 
 include "./ElasticMuseo.php";
@@ -20,17 +20,14 @@ $es->getObras("titulo", $current_query, "", $museu, 0);
 
 $content = "Buscando..." . $_SESSION["pesquisa_atual"] . "<br>";
 
-if(isset($es)){
-  $content .= parseJson($es);
-}else{
-  $content .= "Nada encontrado";
-}
+
+$content .= parseJson($es);
 
 
 return $content;
 
 function parseJson($json){
-  return "Exibindo resultado..." . $json[0];
+  return "Exibindo resultado..." . json_encode($json);
 }
 
  ?>
