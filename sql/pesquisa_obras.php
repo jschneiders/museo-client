@@ -1,18 +1,15 @@
 <?php
 
-
-
-include "connect.php";
-include "../ElasticMuseo.php";
+session_start();
 
 $pesq = "";
 if(isset($_GET['pesquisa'])){
   $pesq = $_GET["pesquisa"];
+
+  $_SESSION["pesquisa_atual"] = $pesq;
 }
 
-
-
-echo "Buscando...$pesq";
+header("Location: ../index.php?op=busca");
 
 
  ?>

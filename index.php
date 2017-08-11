@@ -8,12 +8,8 @@ if(isset($_SESSION["museu_atual"]) &&  $_SESSION["museu_atual"] != -1){
 	$museu_id = $_SESSION["museu_atual"];
 	$museu_name = getMuseuName($museu_id);
 }else{
-	$museu_name = "Bem-vindo";
+	$museu_name = "Todos os Museus";
 }
-
-
-
-
  ?>
 
 <!DOCTYPE html>
