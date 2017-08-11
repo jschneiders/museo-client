@@ -24,7 +24,7 @@
 				$query = "*";
 			}
 			//prepara a url
-			$query = urlencode($query); 
+			$query = urlencode($query);
 			$field = urlencode($field);
 			$museu = urlencode($museu);
 
@@ -42,10 +42,10 @@
 				$tipoObra = urlencode($tipoObra)."/";
 			}
 
-				
+
 			$request = sprintf("%s_search?default_operator=AND&q=%s:%s&size=%u&from=%u%s",$tipoObra,$field,$query,$this->noResults,$offset,$filtroMuseu);
-			
-			
+
+
 			$result = file_get_contents($url.$request);
 
 			$json = json_decode($result);
@@ -54,8 +54,8 @@
 		}
 	}
 
-	$es = new ElasticMuseo();
-	echo $es->getObras("nome","victor","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
+	//$es = new ElasticMuseo();
+	//echo $es->getObras("nome","victor","","Museu de Exemplo",0); //retorna tudo do Museu de Exemplo
 
 	// $es->getObras("","monna lisa","","",0) //pesquisa por qualquer ocorrencia de monna lisa
 
