@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+
+include "./sql/lista_museus.php";
+
+if(isset($_SESSION["museu_atual"]) &&  $_SESSION["museu_atual"] != -1){
+	$museu_id = $_SESSION["museu_atual"];
+	$museu_name = getMuseuName($museu_id);
+}else{
+	$museu_name = "Bem-vindo";
+}
+
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,9 +33,7 @@
         <link href="css/style.css" rel="stylesheet">
 	</head>
 	<body>
-
-        <?php
-					session_start();
+		<?php
 
 					if(isset($_GET['op'])){
 						if($_GET['op'] == ''){
@@ -28,6 +44,7 @@
 					}else{
 						$content = include './content/home.php';
 					}
+
 
         ?>
 
@@ -47,13 +64,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Museu atual(escrever nome do museu) <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#"><?php echo $museu_name ?><span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outros museus <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Museus <span class="caret"></span></a>
                     <ul class="dropdown-menu">
 											<!-- AQUI VAI LISTAR OS MUSEUS NO MENU SUPERIOR -->
 											<?php
-													include "./sql/lista_museus.php";
+
 													$li = listaTodosMuseus();
 													echo $li;
 											 ?>
@@ -106,7 +123,6 @@
 							}
 							echo "<div class='user-box'><b>$usr_name</b><br>$nivel</div>";
 						 ?>
-
 
             <?php echo $content; ?>
 

@@ -12,7 +12,7 @@
 		#offset = Offset na busca para permitir páginas
 		public function getObras($field,$query,$tipoObra="_all",$offset=0)
 		{
-		
+
 			if($tipoObra == "")
 			{
 				$request = sprintf("http://%s:%u/%s/_search?q=%s:%s&size=%u&from=%u",$this->host,$this->port,$this->index,$field,$query,$this->noResults,$offset);
@@ -21,8 +21,8 @@
 			{
 				$request = sprintf("http://%s:%u/%s/%s/_search?q=%s:%s&size=%u&from=%u",$this->host,$this->port,$this->index,$tipoObra,$field,$query,$this->noResults,$offset);
 			}
-			
-			
+
+
 			$result = file_get_contents($request);
 
 			$json = json_decode($result);

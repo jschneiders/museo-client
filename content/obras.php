@@ -3,15 +3,15 @@
 $content = '<div class="container obras">
                 <div class="col-md-8 col-md-offset-2 text-center" >
 
-                    <h1>Museo (nome do atual museu)</h1>
-                    <h4>Navegue pelas obras do museu (nome do atual museu) </h4>
+                    <h1>' . $museu_name .'</h1>
+                    <h4>Navegue pelas obras<h4>
 
 
                     <form class="obras pesquisar">
                         <div class="form-group">
                             <input type="text" class="form-control " placeholder="autor ou nome da obra">
                             <button type="submit" class="btn btn-default ">pesquisar</button>
-                        </div>                        
+                        </div>
                     </form>
 
                     <div class="panel panel-default">

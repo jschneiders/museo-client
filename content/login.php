@@ -2,7 +2,7 @@
 
 $content = '<div class="container">
                 <div class="col-md-8 col-md-offset-2 text-center" >
-                    <h1>Museo (nome do atual museu)</h1>
+                    <h1>' . $museu_name .'</h1>
                     <h4>Fazendo login é possível ter acesso as informações de pesquisador das obras. </h4>
                     <form class="home pesquisar" action="./sql/auth.php" method="post">
                         <div class="form-group">
